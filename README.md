@@ -182,6 +182,14 @@ GEMINI_MAX_RETRIES=1
 
 Never commit API keys, `.env`, `.env.local`, backend secrets, or Supabase service-role credentials.
 
+## Supabase Setup
+
+1. Create a Supabase project and open its SQL Editor.
+2. Run [`supabase/schema.sql`](supabase/schema.sql) to create the cloud tables and user-scoped Row Level Security policies.
+3. Copy `.env.example` to `.env.local`, then set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` from the project's API settings. Use the publishable key, never a service-role key, in the frontend.
+4. In Authentication URL Configuration, set the local Site URL to `http://localhost:5173` and add `http://localhost:5173/**` to the Redirect URLs.
+5. Restart the Vite dev server and sign up with the app.
+
 ## ☁️ Data Architecture
 
 WELLsync supports local browser storage as a fallback and Supabase cloud synchronization for authenticated users. Cloud data includes daily check-ins and goals, protected by Supabase Row Level Security.

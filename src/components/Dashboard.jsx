@@ -3,6 +3,7 @@ import { calculateWellnessScore } from "../utils/wellnessScore";
 import { getWellnessHistory, getGoals as getLocalGoals } from "../utils/wellnessData";
 import { getCloudCheckins, getCloudGoals } from "../utils/supabaseData";
 import { supabase } from "../lib/supabase";
+import Soundscape from "./Soundscape";
 import "./Dashboard.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
@@ -529,6 +530,7 @@ export default function Dashboard({ latestData, onNavigate, dataSource = "local"
             <div className="dash2-coach-buttons"><button onClick={() => openAi("What should I focus on today?")}>Chat Now <small>Ask anything</small></button><button onClick={() => onNavigate?.("insights")}>View Insights <small>Patterns & context</small></button></div>
             <button className="dash2-coach-input" onClick={() => openAi("Give me a concise overview of what matters most in my wellness today.")}><span><Icon name="search" size={15} /></span><strong>Ask me anything...</strong><b><Icon name="arrow" size={15} /></b></button>
           </section>
+          <Soundscape timeTheme={timeTheme} />
         </aside>
       </main>
 
